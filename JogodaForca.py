@@ -7,7 +7,7 @@ Created on Tue Mar 24 09:49:46 2015
 
 palavra=input("Digite a palavra aqui:")
 erros=0
-acertos=0
+acertos=[]
 digitados=[]
 
 while True:
