@@ -25,4 +25,4 @@ while True:
         print("Você tem mais 1 tentativa!")
     elif erros==6:
         print("Sinto Muito, você perdeu!")
-        
+    break
