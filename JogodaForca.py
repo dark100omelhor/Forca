@@ -9,9 +9,11 @@ palavra=input("Digite a palavra aqui:")
 erros=0
 acertos=0
 digitados=[]
-tentativas=[]
 
 while True:
+    tentativas=[]
+    tentativas=input("Digite uma letra:")
+    
     
     if erros==1:
         print("Você tem mais 5 tentativas!")
