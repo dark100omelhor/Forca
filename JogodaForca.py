@@ -22,6 +22,20 @@ leitura=arquivo.read(100)
 l = leitura.split(',')
 palavra = random.choice(l)
 print(palavra)
+numletras=len(palavra)
+
+
+if palavra=="São Paulo":
+    numletras=numletras-1
+elif palavra=="São Bernardo do Campo":
+    numletras=numletras-3
+elif palavra=="Baleia Azul":
+    numletras=numletras-1
+elif palavra=="Leão Marinho":
+    numletras=numletras-1
+
+print(numletras)
+
 
 
 window=turtle.Screen()
@@ -135,6 +149,37 @@ def pernadois():
     trave.color("black")
     
 
+i=1
+x=0
+y=0
+
+
+while i<numletras:
+    tracinho=turtle.Turtle()
+    tracinho.hideturtle()
+    tracinho.speed(10)
+    tracinho.pensize(3)
+    tracinho.penup()
+    if i==1:
+        tracinho.setpos(-200+y,-200)
+    tracinho.pendown()
+    tracinho.right(180)
+    tracinho.forward(50)
+    
+    tracinho.color("red")
+    tracinho.penup()
+    tracinho.forward(x)
+
+    i=i+1
+    x=x+30
+    y=y+30
+
+    
+
+
+    
+
+
 
 
 bonecocabeça()
@@ -143,6 +188,8 @@ bracoum()
 bracodois()
 pernaum()
 pernadois()
+
+
 
 
 
