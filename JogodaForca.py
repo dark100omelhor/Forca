@@ -14,15 +14,21 @@ import random
 erros=0
 acertos=[]
 erradas=[]
+tentativas=[]
 l=[]
 leitura=[]
+gabriel=[]
+lista2=[]
 
 arquivo=open("entradamemo.csv", "r+")
 leitura=arquivo.read(100)
 l = leitura.split(',')
-palavra = random.choice(l)
+palavra = random.choice(l).lower()
 print(palavra)
 numletras=len(palavra)
+
+
+
 
 
 if palavra=="São Paulo":
@@ -40,7 +46,7 @@ print(numletras)
 
 window=turtle.Screen()
 window.setup(width=1400, startx=None, starty=None)
-window.title("Jogo da Forca!!!!!!!@@")
+window.title("Jogo da Forca!!!!!!!###$$$@@")
 window.bgcolor("purple")
 
 
@@ -148,8 +154,7 @@ def pernadois():
     trave.forward(50)
     trave.color("black")
     
-
-i=1
+i=0
 x=0
 y=0
 
@@ -160,8 +165,7 @@ while i<numletras:
     tracinho.speed(10)
     tracinho.pensize(3)
     tracinho.penup()
-    if i==1:
-        tracinho.setpos(-200+y,-200)
+    tracinho.setpos(-200+y,-200)
     tracinho.pendown()
     tracinho.right(180)
     tracinho.forward(50)
@@ -172,8 +176,40 @@ while i<numletras:
 
     i=i+1
     x=x+30
-    y=y+30
+    y=y+70
 
+
+c=0
+
+while c<6:
+    tentativas =  window.textinput('','coloque uma letra')
+    if tentativas in palavra:
+        acertos+=tentativas
+    elif tentativas in tentativas:
+        erradas+=tentativas
+        erros=erros+1        
+        print("Voce ja tentou essa letra!!")
+    else:
+        erradas+=tentativas
+        erros=erros+1
+    if erros==1:
+        bonecocabeça()
+    elif erros==2:
+        tronco()
+    elif erros==3:
+        bracoum()
+    elif erros==4:
+        bracodois()
+    elif erros==5:
+        pernaum()
+    elif erros==6:
+        pernadois()
+        print("Perdeu")
+    c=c+1
+    
+    
+    
+    
     
 
 
@@ -182,12 +218,7 @@ while i<numletras:
 
 
 
-bonecocabeça()
-tronco()
-bracoum()
-bracodois()
-pernaum()
-pernadois()
+
 
 
 
