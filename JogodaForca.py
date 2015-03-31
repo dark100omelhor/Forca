@@ -15,10 +15,13 @@ erros=0
 acertos=[]
 erradas=[]
 tentativas=[]
+digitadas=[]
 l=[]
 leitura=[]
 gabriel=[]
 lista2=[]
+letras=[]
+
 
 arquivo=open("entradamemo.csv", "r+")
 leitura=arquivo.read(100)
@@ -26,6 +29,8 @@ l = leitura.split(',')
 palavra = random.choice(l).lower()
 print(palavra)
 numletras=len(palavra)
+letras=palavra.split()
+
 
 
 
@@ -154,44 +159,47 @@ def pernadois():
     trave.forward(50)
     trave.color("black")
     
-i=0
-x=0
-y=0
 
+e=0
 
-while i<numletras:
-    tracinho=turtle.Turtle()
-    tracinho.hideturtle()
-    tracinho.speed(10)
-    tracinho.pensize(3)
-    tracinho.penup()
-    tracinho.setpos(-200+y,-200)
-    tracinho.pendown()
-    tracinho.right(180)
-    tracinho.forward(50)
+while erros<6:
+    wow=""
+    for letra in palavra:
+        wow+=letra if letra in acertos else "_ "
+    getto=turtle.Turtle()
+    getto.hideturtle()
+    getto.penup()
+    getto.setpos(-235,-200)
+    getto.write(wow,move=False,align="left",font=("Arial",45,"normal"))
     
-    tracinho.color("red")
-    tracinho.penup()
-    tracinho.forward(x)
-
-    i=i+1
-    x=x+30
-    y=y+70
-
-
-c=0
-
-while c<6:
-    tentativas =  window.textinput('','coloque uma letra')
+    if wow==palavra:
+        break
+    tentativas=window.textinput('','Digite uma letra').lower().strip()
+    if tentativas in digitadas:
+        digitadas+=tentativas
+        print("voce ja fez essa tentativa")
+        continue
+    else:
+        digitadas+=tentativas
+        getto.clear()
+    if tentativas in acertos:
+        continue
     if tentativas in palavra:
         acertos+=tentativas
-    elif tentativas in tentativas:
-        erradas+=tentativas
-        erros=erros+1        
-        print("Voce ja tentou essa letra!!")
+        getto.clear
     else:
-        erradas+=tentativas
         erros=erros+1
+        
+    if acertos==palavra:
+        print("Você ganhou")
+        break
+    
+        
+ 
+ 
+ 
+ 
+ 
     if erros==1:
         bonecocabeça()
     elif erros==2:
@@ -205,25 +213,8 @@ while c<6:
     elif erros==6:
         pernadois()
         print("Perdeu")
-    c=c+1
-    
-    
-    
-    
-    
-
-
-    
-
-
-
-
-
-
-
-
-
-
+        
+       
 window.exitonclick()
 
 
