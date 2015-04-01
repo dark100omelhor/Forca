@@ -52,7 +52,8 @@ print(numletras)
 window=turtle.Screen()
 window.setup(width=1400, startx=None, starty=None)
 window.title("Jogo da Forca!!!!!!!###$$$@@")
-window.bgcolor("purple")
+#window.bgcolor("pink")
+window.bgpic("batmanlogo.gif")
 
 
 trave=turtle.Turtle()
@@ -61,6 +62,7 @@ trave.pensize(5)
 trave.speed(2)
 trave.penup()
 trave.setpos(-300,0)
+trave.pencolor("white")
 
 trave.pendown()
 trave.forward(80)
@@ -165,7 +167,7 @@ e=0
 while erros<6:
     wow=""
     for letra in palavra:
-        wow+=letra if letra in acertos else "_ "
+        wow+=letra if letra in acertos else "  " if letra==(" ") else "_ "
     getto=turtle.Turtle()
     getto.hideturtle()
     getto.penup()
@@ -175,8 +177,13 @@ while erros<6:
     if wow==palavra:
         break
     tentativas=window.textinput('','Digite uma letra').lower().strip()
+    if tentativas=="exit":
+        break
+    
+        
     if tentativas in digitadas:
         digitadas+=tentativas
+        getto.clear()
         print("voce ja fez essa tentativa")
         continue
     else:
